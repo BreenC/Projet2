@@ -33,4 +33,9 @@ class Centrale:
             i = i + 1
             self.elav.append(tampon)
 
-    
+    def calc(self):
+        for turbine in self.turbines :
+            if turbine.is_disponible == False :
+                turbine.debit_turbine = 0
+            else :
+                turbine.debit_turbine = max(turbine.debits)

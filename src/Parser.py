@@ -35,7 +35,7 @@ class Parser:
         for line in file.read().rstrip():
             i = 1
             for nb in line.strip():
-                puissances[i].append(floar(nb))
+                puissances[i].append(float(nb))
                 i = i + 1
             if i != 5:
                 print("Error, le nombre de turbine est", i, "valeurs, cela devrait être 5 !")
@@ -45,7 +45,8 @@ class Parser:
             raise Exception("Wrong Puissance file format, incorrect number of cells")
         i = 1
         for turbine in Centrale.turbines :
-            turbine.puissance = puissances[i]
+            turbine.numero = 6 - i
+            turbine.puissance = puissances[6 - i]
             i = i + 1
         if i != 5:
             print("Error, le nombre de turbine est", i, "valeurs, cela devrait être 5 !")

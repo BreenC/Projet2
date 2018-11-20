@@ -2,16 +2,17 @@ from src.Centrale import Centrale
 
 class Turbine:
     def __init__(self):
-        self.numero
-        self.debit_turbine
-        self.puissance
-        self.debit_rest
+        self.numero = 0
+        self.debit_turbine = 0
+        self.debits = []
+        self.puissance = []
+        self.debit_rest = Centrale.qtot
         self.borne_sup = 160
         self.borne_inf = 0
-        self.elav
-        self.perte
-        self.chute_nette
-        self.etat
+        self.perte = []
+        self.chute_nette = []
+        self.etat = []
+        self.is_disponible = True
 
     def get_numero(self):
         return self.numero
@@ -82,3 +83,6 @@ class Turbine:
             i = i + 5
             self.etat.append(i)
         return self.etat
+
+    def rendre_indisponible(self):
+        self.is_disponible = False
