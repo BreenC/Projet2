@@ -11,6 +11,7 @@ class Turbine:
         self.elav
         self.perte
         self.chute_nette
+        self.etat
 
     def get_numero(self):
         return self.numero
@@ -68,3 +69,16 @@ class Turbine:
     def change_borne_sup(self, differance):
         self.borne_sup = self.borne_sup - differance
         return self.borne_sup
+
+    def test_borne_sup(self):
+        if self.borne_sup > self.debit_rest :
+            return self.debit_rest
+        else :
+            return  self.borne_sup
+
+    def init_etat(self):
+        i = 0
+        while i <= self.test_borne_sup() :
+            i = i + 5
+            self.etat.append(i)
+        return self.etat
