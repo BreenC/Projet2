@@ -1,3 +1,5 @@
+from src.Centrale import Centrale
+
 class Turbine:
     def __init__(self):
         self.numero
@@ -6,6 +8,9 @@ class Turbine:
         self.debit_rest
         self.borne_sup = 160
         self.borne_inf = 0
+        self.elav
+        self.perte
+        self.chute_nette
 
     def get_numero(self):
         return self.numero
@@ -25,6 +30,9 @@ class Turbine:
     def get_borne_inf(self):
         return  self.borne_inf
 
+    def get_chute_nette(self):
+        return  self.chute_nette
+
     def set_numero(self, val):
         self.numero = val
 
@@ -36,3 +44,17 @@ class Turbine:
 
     def set_debit_rest(self, val):
         self.debit_rest  = val
+
+    def calcul_chute_nette(self):
+        i = 1
+        while i <= 200  :
+            tampon = Centrale.elamont[i] - Centrale.elav[i] - self.perte[i]
+            i = i + 1
+            self.chute_nette.append(tampon)
+
+    def calcul_perte(self):
+        i = 1
+        while i <= 200:
+            tampon = 0.5 * 10^{-5} * self.debit_turbine * self.debit_turbine
+            i = i + 1
+            self.perte.append(tampon)

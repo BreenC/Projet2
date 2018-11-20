@@ -35,7 +35,7 @@ class Parser:
         for line in file.read().rstrip():
             i = 1
             for nb in line.strip():
-                puissances[i].append(nb)
+                puissances[i].append(floar(nb))
                 i = i + 1
             if i != 5:
                 print("Error, le nombre de turbine est", i, "valeurs, cela devrait être 5 !")
