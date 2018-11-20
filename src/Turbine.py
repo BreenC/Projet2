@@ -58,3 +58,13 @@ class Turbine:
             tampon = 0.5 * 10^{-5} * self.debit_turbine * self.debit_turbine
             i = i + 1
             self.perte.append(tampon)
+
+    def contraintes(self):
+        if self.debit_turbine <= self.borne_sup & self.debit_turbine >= self.borne_inf :
+            return True
+        else :
+            return False
+
+    def change_borne_sup(self, differance):
+        self.borne_sup = self.borne_sup - differance
+        return self.borne_sup
