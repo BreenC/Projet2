@@ -86,3 +86,35 @@ class Turbine:
 
     def rendre_indisponible(self):
         self.is_disponible = False
+
+    def puiss_turbine1(self):
+        if self.numero == 1 :
+            self.puissance = -8.002 + 0.02927 * self.debit_turbine - 0.5131 * self.chute_nette - 0.0004408 * self.debit_turbine * self.debit_turbine - 0.009321 * self.chute_nette * self.debit_turbine - 0.008206 * self.chute_nette * self.chute_nette
+        else :
+            return 0
+
+    def puiss_turbine2(self):
+        if self.numero == 2 :
+            self.puissance = 0.6283 + 0.02915 * self.debit_turbine + 0.01924 * self.chute_nette - 0.0000446 * self.debit_turbine * self.debit_turbine - 0.009324 * self.chute_nette * self.debit_turbine
+        else :
+            return 0
+
+    def puiss_turbine3(self):
+        if self.numero == 3 :
+            self.puissance = 47.41 - 0.01254 * self.debit_turbine + 2.857 * self.chute_nette - 0.0003613 * self.debit_turbine * self.debit_turbine - 0.01044 * self.chute_nette * self.debit_turbine + 0.04302 * self.chute_nette * self.chute_nette
+        else :
+            return 0
+
+    def puiss_turbine4(self):
+        if self.numero == 4:
+            #a changer la formule est toute fausse c'est celle de la turbine 1 sans changement
+            self.puissance = 47.41 - 0.01254 * self.debit_turbine + 2.857 * self.chute_nette - 0.0003613 * self.debit_turbine * self.debit_turbine - 0.01044 * self.chute_nette * self.debit_turbine + 0.04302 * self.chute_nette * self.chute_nette
+        else:
+            return 0
+
+    def puiss_turbine5(self):
+        if self.numero == 5:
+            #a changer le chiffre avant x^3
+            self.puissance = 5.42 - 0.443 * self.debit_turbine + 0.1635 * self.chute_nette + 0.004277 * self.debit_turbine * self.debit_turbine - 0.01564 * self.chute_nette * self.debit_turbine - 0.39 * 10^{-5} * self.debit_turbine * self.debit_turbine * self.debit_turbine + 2.318 * 10^{-5} * self.debit_turbine * self.debit_turbine * self.chute_nette
+        else:
+            return 0
