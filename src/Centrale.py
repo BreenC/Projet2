@@ -6,6 +6,7 @@ class Centrale:
         self.qtot
         self.elamont
         self.elav
+        self.deverse = 0
 
     def get_turbines(self):
         return self.turbines
@@ -39,3 +40,7 @@ class Centrale:
                 turbine.debit_turbine = 0
             else :
                 turbine.debit_turbine = max(turbine.debits)
+
+    def calcul_deverse(self):
+        self.deverse = self.turbines[5].debit_rest - self.turbines[5].debit_turbine
+        return  self.deverse
