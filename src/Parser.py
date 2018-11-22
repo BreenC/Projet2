@@ -59,11 +59,11 @@ class Parser:
 
     def create_turbines(self, centrale):
         i = 5
-        if i >0:
+        while i >0:
             turbine = Turbine()
             turbine.numero = i
             centrale.turbines.append(turbine)
             i = i - 1
-        if i != 5:
-            print("Error, le nombre de turbine est", i, "valeurs, cela devrait être 5 !")
+        if len(centrale.turbines) != 5:
+            print("Error, le nombre de turbine est",  len(centrale.turbines), "valeurs, cela devrait être 5 !")
             raise Exception("Wrong Puissance file format, incorrect number of cells")

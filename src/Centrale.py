@@ -45,4 +45,12 @@ class Centrale:
 
     def run(self):
         self.calcul_elva()
+        for turbine in self.turbines:
+            turbine.calcul_perte()
+            turbine.calcul_chute_nette(self)
+            turbine.puiss_turbine1()
+            turbine.puiss_turbine2()
+            turbine.puiss_turbine3()
+            turbine.puiss_turbine4()
+            turbine.puiss_turbine5()
         return 0

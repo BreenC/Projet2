@@ -6,7 +6,7 @@ class Turbine:
         self.debit_turbine = 0
         self.debits = []
         self.puissance = []
-        self.debit_rest = Centrale.qtot
+        self.debit_rest = 0
         self.borne_sup = 160
         self.borne_inf = 0
         self.perte = []
@@ -47,17 +47,17 @@ class Turbine:
     def set_debit_rest(self, val):
         self.debit_rest  = val
 
-    def calcul_chute_nette(self):
-        i = 1
-        while i <= 200  :
-            tampon = Centrale.elamont[i] - Centrale.elav[i] - self.perte[i]
+    def calcul_chute_nette(self, centrale):
+        i = 0
+        while i < len(self.perte)  :
+            tampon = float(centrale.elamont[i]) - float(centrale.elav[i]) - float(self.perte[i])
             i = i + 1
             self.chute_nette.append(tampon)
 
     def calcul_perte(self):
-        i = 1
-        while i <= 200:
-            tampon = 0.5 * 10^{-5} * self.debit_turbine * self.debit_turbine
+        i = 0
+        while i < len(self.debits):
+            tampon = 0.5 * 10^{-5} * self.debits[i] * self.debits[i]
             i = i + 1
             self.perte.append(tampon)
 
@@ -89,30 +89,36 @@ class Turbine:
 
     def puiss_turbine1(self):
         if self.numero == 1 :
-            self.puissance = -8.002 + 0.02927 * self.debit_turbine - 0.5131 * self.chute_nette - 0.0004408 * self.debit_turbine * self.debit_turbine - 0.009321 * self.chute_nette * self.debit_turbine - 0.008206 * self.chute_nette * self.chute_nette
+            for chute in self.chute_nette:
+                self.puissance = -8.002 + 0.02927 * self.debit_turbine - 0.5131 * chute - 0.0004408 * self.debit_turbine * self.debit_turbine - 0.009321 * chute * self.debit_turbine - 0.008206 * chute * chute
         else :
             return 0
 
     def puiss_turbine2(self):
         if self.numero == 2 :
-            self.puissance = 0.6283 + 0.02915 * self.debit_turbine + 0.01924 * self.chute_nette - 0.0000446 * self.debit_turbine * self.debit_turbine - 0.009324 * self.chute_nette * self.debit_turbine
+            for chute in self.chute_nette:
+                self.puissance = 0.6283 + 0.02915 * self.debit_turbine + 0.01924 * chute - 0.0000446 * self.debit_turbine * self.debit_turbine - 0.009324 * chute * self.debit_turbine
         else :
             return 0
 
     def puiss_turbine3(self):
         if self.numero == 3 :
-            self.puissance = 47.41 - 0.01254 * self.debit_turbine + 2.857 * self.chute_nette - 0.0003613 * self.debit_turbine * self.debit_turbine - 0.01044 * self.chute_nette * self.debit_turbine + 0.04302 * self.chute_nette * self.chute_nette
+            for chute in self.chute_nette:
+                self.puissance = 47.41 - 0.01254 * self.debit_turbine + 2.857 * chute - 0.0003613 * self.debit_turbine * self.debit_turbine - 0.01044 * chute * self.debit_turbine + 0.04302 * chute**2
         else :
             return 0
 
     def puiss_turbine4(self):
         if self.numero == 4:
-            self.puissance = -0.04632 - 0.1905 * self.debit_turbine + 0.001769 * self.chute_nette  + 0.004951 * self.chute_nette * self.debit_turbine + 0.003537 * self.debit_turbine**2 + 3.487 * 10**(-5) * self.chute_nette * self.debit_turbine**2 -1.689 * 10**(-5) * self.debit_turbine**3
+            for chute in self.chute_nette:
+                self.puissance = -0.04632 - 0.1905 * self.debit_turbine + 0.001769 * chute  + 0.004951 * chute * self.debit_turbine + 0.003537 * self.debit_turbine**2 + 3.487 * 10**(-5) * chute * self.debit_turbine**2 -1.689 * 10**(-5) * self.debit_turbine**3
         else:
             return 0
 
     def puiss_turbine5(self):
         if self.numero == 5:
-            self.puissance = 0.2946 - 0.134 * self.debit_turbine + 0.008074 * self.chute_nette + 0.00809  * self.debit_turbine * self.debit_turbine + 0.002706  * self.debit_turbine**2 + 1.949 * 10**(-5) * self.chute_nette * self.debit_turbine**2 - 1.318 * 10**(-5) * self.debit_turbine**3
+            for chute in self.chute_nette:
+                self.puissance = 0.2946 - 0.134 * self.debit_turbine + 0.008074 * chute + 0.00809  * self.debit_turbine * self.debit_turbine + 0.002706  * self.debit_turbine**2 + 1.949 * 10**(-5) * chute * self.debit_turbine**2 - 1.318 * 10**(-5) * self.debit_turbine**3
         else:
             return 0
+
