@@ -107,14 +107,12 @@ class Turbine:
 
     def puiss_turbine4(self):
         if self.numero == 4:
-            #a changer la formule est toute fausse c'est celle de la turbine 1 sans changement
-            self.puissance = 47.41 - 0.01254 * self.debit_turbine + 2.857 * self.chute_nette - 0.0003613 * self.debit_turbine * self.debit_turbine - 0.01044 * self.chute_nette * self.debit_turbine + 0.04302 * self.chute_nette * self.chute_nette
+            self.puissance = -0.04632 - 0.1905 * self.debit_turbine + 0.001769 * self.chute_nette  + 0.004951 * self.chute_nette * self.debit_turbine + 0.003537 * self.debit_turbine**2 + 3.487 * 10**(-5) * self.chute_nette * self.debit_turbine**2 -1.689 * 10**(-5) * self.debit_turbine**3
         else:
             return 0
 
     def puiss_turbine5(self):
         if self.numero == 5:
-            #a changer le chiffre avant x^3
-            self.puissance = 5.42 - 0.443 * self.debit_turbine + 0.1635 * self.chute_nette + 0.004277 * self.debit_turbine * self.debit_turbine - 0.01564 * self.chute_nette * self.debit_turbine - 0.39 * 10^{-5} * self.debit_turbine * self.debit_turbine * self.debit_turbine + 2.318 * 10^{-5} * self.debit_turbine * self.debit_turbine * self.chute_nette
+            self.puissance = 0.2946 - 0.134 * self.debit_turbine + 0.008074 * self.chute_nette + 0.00809  * self.debit_turbine * self.debit_turbine + 0.002706  * self.debit_turbine**2 + 1.949 * 10**(-5) * self.chute_nette * self.debit_turbine**2 - 1.318 * 10**(-5) * self.debit_turbine**3
         else:
             return 0
