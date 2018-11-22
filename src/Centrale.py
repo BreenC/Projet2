@@ -1,11 +1,9 @@
-from src.Turbine import Turbine
-
 class Centrale:
     def __init__(self):
         self.turbines = []
-        self.qtot
-        self.elamont
-        self.elav
+        self.qtot = []
+        self.elamont = []
+        self.elav = []
         self.deverse = 0
 
     def get_turbines(self):
@@ -29,8 +27,8 @@ class Centrale:
 
     def calcul_elva(self):
         i = 1
-        while i <= 200:
-            tampon = - 7.014 * 10^{-7} * self.qtot * self.qtot + 0.004107 * self.qtot + 137.2
+        while i < 200:
+            tampon = - 7.014 * 10**(-7) * self.qtot[i] * self.qtot[i] + 0.004107 * self.qtot[i] + 137.2
             i = i + 1
             self.elav.append(tampon)
 
@@ -42,5 +40,9 @@ class Centrale:
                 turbine.debit_turbine = max(turbine.debits)
 
     def calcul_deverse(self):
-        self.deverse = self.turbines[5].debit_rest - self.turbines[5].debit_turbine
+        self.deverse = self.turbines[4].debit_rest - self.turbines[4].debit_turbine
         return  self.deverse
+
+    def run(self):
+        self.calcul_elva()
+        return 0
