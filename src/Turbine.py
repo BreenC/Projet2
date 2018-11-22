@@ -56,8 +56,8 @@ class Turbine:
 
     def calcul_perte(self):
         i = 0
-        while i < len(self.debits):
-            tampon = 0.5 * 10^{-5} * self.debits[i] * self.debits[i]
+        while i < len(self.etat):
+            tampon = 0.5 * 10**(-5) * self.etat[i] * self.etat[i]
             i = i + 1
             self.perte.append(tampon)
 
@@ -81,7 +81,7 @@ class Turbine:
         i = 0
         while i <= self.test_borne_sup() :
             i = i + 5
-            self.etat.append(i)
+            self.etat.append(float(i))
         return self.etat
 
     def rendre_indisponible(self):
