@@ -38,12 +38,7 @@ class Centrale:
             i = i + 1
             self.elav.append(tampon)
 
-    def calc(self):
-        for turbine in self.turbines :
-            if turbine.is_disponible == False :
-                turbine.debit_turbine = 0
-            else :
-                turbine.debit_turbine = max(turbine.debits)
+
 
     def calcul_deverse(self):
         self.deverse = self.turbines[4].debit_rest - self.turbines[4].debit_turbine
@@ -114,6 +109,11 @@ class Centrale:
                 turbine.puiss_opt = max(tampon)
                 turbine.debit_turbine = tampon.index(max(tampon))
                 i = i + 1
+    #REMETTRE AU PROPRE
+            if turbine.is_disponible == False:
+                 turbine.debit_turbine = 0
+            else:
+                 turbine.debit_turbine = max(turbine.debits)
             r = r - turbine.debit_turbine
             puiss = puiss + turbine.puiss_opt
         return r
@@ -129,5 +129,5 @@ class Centrale:
         self.calc_f(self.qtot[0])
         #self.calc_opt(self.qtot[0])
         for turbine in self.turbines:
-            print(turbine.debits)
+            print(turbine.debit_turbine)
         return 0
