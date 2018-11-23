@@ -67,3 +67,4 @@ class Parser:
         if len(centrale.turbines) != 5:
             print("Error, le nombre de turbine est",  len(centrale.turbines), "valeurs, cela devrait être 5 !")
             raise Exception("Wrong Puissance file format, incorrect number of cells")
+
