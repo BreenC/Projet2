@@ -128,6 +128,7 @@ class Centrale:
             turbine.calcul_chute_nette(self)
         self.calc_f(self.qtot[0])
         #self.calc_opt(self.qtot[0])
-        for turbine in self.turbines:
-            print(turbine.debit_turbine)
+        turbine = self.get_turbine_i(1)
+        print(turbine.puiss_opt)
+        print(turbine.debit_turbine)
         return 0
