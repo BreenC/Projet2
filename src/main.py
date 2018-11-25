@@ -21,8 +21,8 @@ class Main:
         Parser.parse_elamont(pathelamont, centrale)
         #Parser.parse_Pi(pathpuiss)
         Parser.create_turbines(self,centrale)
-
-        centrale.run()
+        for val_qtot in centrale.qtot :
+            centrale.run(val_qtot)
 
 if __name__ == '__main__':
     Main()

@@ -52,7 +52,7 @@ class Turbine:
 
     def calcul_chute_nette(self, centrale):
         i = 0
-        while i < len(self.perte)  :
+        while i < len(self.perte) and i < 200  :
             tampon = float(centrale.elamont[i]) - float(centrale.elav[i]) - float(self.perte[i])
             i = i + 1
             self.chute_nette.append(tampon)

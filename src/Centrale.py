@@ -112,10 +112,6 @@ class Centrale:
                 turbine.puiss_opt = max(tampon)
                 turbine.debit_turbine = turbine.debits[(tampon.index(max(tampon)))]
                 i = i + 1
-
-    #REMETTRE AU PROPRE
-          #
-          #       turbine.debit_turbine = max(turbine.debits)
             r = r - turbine.debit_turbine
             puiss = puiss + turbine.puiss_opt
         return r
@@ -129,26 +125,23 @@ class Centrale:
         for turbine in self.turbines:
             self.puissance_totale = self.puissance_totale + turbine.puiss_opt
 
-    def run(self):
+
+    def run(self,val_qtot):
         self.calcul_elva()
         self.discretidation()
         for turbine in self.turbines:
-            turbine.init_etats(self.qtot[5])
+            turbine.init_etats(val_qtot)
             turbine.calcul_perte()
             turbine.calcul_chute_nette(self)
-        self.calc_f(self.qtot[5])
-        self.calc_opt(self.qtot[5])
-        self.calc_debit_turb_total(self.qtot[5])
+        self.calc_f(val_qtot)
+        self.calc_opt(val_qtot)
+        self.calc_debit_turb_total(val_qtot)
         self.fonction_obj()
         print(self.puissance_totale)
         print(self.debit_turbine_total)
         print(self.deverse)
         print("débits")
+
         for turbine in self.turbines:
-         #  print("numéro : ")
-          #  print(turbine.numero)
-        # print("puissance : ")
-         #   print(turbine.puiss_opt)
-          #  print("débit : ")
-            print( turbine.debit_turbine)
+            print(turbine.debit_turbine)
         return  0
