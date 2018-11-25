@@ -109,6 +109,7 @@ class Centrale:
                 while k * 5 <= r and k * 5 <= turbine.borne_sup :
                     tampon.append(turbine.f[k])
                     k = k + 1
+                print(tampon)
                 turbine.puiss_opt = max(tampon)
                 turbine.debit_turbine = turbine.debits[(tampon.index(max(tampon)))]
                 i = i + 1
@@ -137,11 +138,12 @@ class Centrale:
         self.calc_opt(val_qtot)
         self.calc_debit_turb_total(val_qtot)
         self.fonction_obj()
-        print(self.puissance_totale)
-        print(self.debit_turbine_total)
-        print(self.deverse)
+        #print(self.puissance_totale)
+        #print(self.debit_turbine_total)
+       # print(self.deverse)
         print("débits")
 
         for turbine in self.turbines:
+           # print(turbine.borne_sup)
             print(turbine.debit_turbine)
         return  0
