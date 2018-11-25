@@ -5,6 +5,8 @@ class Centrale:
         self.elamont = []
         self.elav = []
         self.deverse = 0
+        self.puissance_totale = 0
+        self.debit_turbine_total = 0
 
     def get_turbines(self):
         return self.turbines
@@ -41,7 +43,7 @@ class Centrale:
 
 
     def calcul_deverse(self):
-        self.deverse = self.turbines[4].debit_rest - self.turbines[4].debit_turbine
+        self.deverse = self.qtot - self.debit_turbine_total
         return  self.deverse
 
     def calc_f(self, val_qtot):
@@ -99,15 +101,16 @@ class Centrale:
             turbine = self.get_turbine_i(i)
             if i == 1 :
                 i = i + 1
-            elif i == 5:
+            else :
                 k = 0
                 tampon =[]
-                while k * 5 <= r:
+                while k * 5 <= r and k*5 <= turbine.borne_sup :
                     tampon.append(turbine.f[k])
                     k = k + 1
                 turbine.puiss_opt = max(tampon)
-                turbine.debit_turbine = tampon.index(max(tampon))
+                turbine.debit_turbine = turbine.debits[(tampon.index(max(tampon)))]
                 i = i + 1
+
     #REMETTRE AU PROPRE
           #  if turbine.is_disponible == False:
           #       turbine.debit_turbine = 0
@@ -117,16 +120,26 @@ class Centrale:
             puiss = puiss + turbine.puiss_opt
         return r
 
+    def fonction_obj(self):
+        for turbine in self.turbines:
+            self.puissance_totale = self.puissance_totale + turbine.puiss_opt
+
     def run(self):
         self.calcul_elva()
         self.discretidation()
         for turbine in self.turbines:
-            turbine.init_etats(self.qtot[0])
+            turbine.init_etats(self.qtot[5])
             turbine.calcul_perte()
             turbine.calcul_chute_nette(self)
-        self.calc_f(self.qtot[0])
-       # self.calc_opt(self.qtot[0])
-        for turbine in self.turbines:
-            print(turbine.puissance)
-           # print(turbine.debit_turbine)
+        self.calc_f(self.qtot[5])
+        r = self.calc_opt(self.qtot[5])
+        print(self.qtot[5])
+        print(r)
+        #for turbine in self.turbines:
+         #   print("numéro : ")
+          #  print(turbine.numero)
+        # print("puissance : ")
+         #   print(turbine.puiss_opt)
+          #  print("débit : ")
+           # print( turbine.debit_turbine)
         return  0
