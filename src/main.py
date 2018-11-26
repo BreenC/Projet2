@@ -40,7 +40,7 @@ class Main:
                 if borne <= 160 and borne >0 :
                    centrale.get_turbine_i(param).change_borne_sup(borne)
 
-        centrale.run(centrale.qtot[0])
+        centrale.run(0)
       #  for val_qtot in centrale.qtot  :
       #      centrale.run(val_qtot)
 
