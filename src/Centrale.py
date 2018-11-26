@@ -79,12 +79,14 @@ class Centrale:
                         tampon = []
                         while k <= i and k <= turbine.borne_sup:
                             m = int((i-k)/5)
-                            f = turbine.puissance #+ turbine_prec.f[m]
+                            if m >= len(turbine_prec.f):
+                                m = len(turbine_prec.f) - 1
+                            f = turbine.puissance + turbine_prec.f[m]
                             tampon.append(f)
                             k = k + 5
                         val = max(tampon)
                         turbine.f.append(val)
-                        turbine.debits.append(tampon.index(max(tampon)) * 5)
+                        turbine.debits.append(tampon.index(max(tampon))*5)
                         turbine.etats.append(i)
                         i = i + 5
                 elif turbine.numero == 5 :
@@ -102,7 +104,9 @@ class Centrale:
                     tampon = []
                     while i <= turbine.borne_sup :
                         turbine.puiss_turbine1(i,self.chute_nette[ind])
-                        m = int((self.qtot[ind] - i)/5)
+                        m = int((turbine.borne_sup - i)/5)
+                        if m > len(turbine_prec.f):
+                            m = len(turbine_prec.f)-1
                         f = turbine.puissance + turbine_prec.f[m]
                         i = i + 5
                         tampon.append(f)
