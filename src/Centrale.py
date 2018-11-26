@@ -44,7 +44,7 @@ class Centrale:
         self.deverse = self.qtot - self.debit_turbine_total
         return  self.deverse
 
-    def calc_f(self, val_qtot):
+    def calc_f(self, val_qtot, ind):
         for turbine in self.turbines :
             if turbine.is_disponible == False:
                 turbine.debit_turbine = 0
@@ -63,7 +63,7 @@ class Centrale:
                         tampon = []
                         while k <= i and k <= turbine.borne_sup:
                             m = int((i-k)/5)
-                            f = turbine.puissance[i] + turbine_prec.f[m]
+                            f = turbine.puissance[ind] + turbine_prec.f[m]
                             tampon.append(f)
                             k = k + 5
                         val = max(tampon)
@@ -86,7 +86,7 @@ class Centrale:
                     while i <= turbine.borne_sup :
                         turbine.puiss_turbine1(i)
                         m = int((val_qtot - i)/5)
-                        f = turbine.puissance[i]  + turbine_prec.f[m]
+                        f = turbine.puissance[ind]  + turbine_prec.f[m]
                         i = i + 5
                         tampon.append(f)
                     turbine.debits.append(tampon.index(max(tampon))*5)
@@ -109,7 +109,6 @@ class Centrale:
                 while k * 5 <= r and k * 5 <= turbine.borne_sup :
                     tampon.append(turbine.f[k])
                     k = k + 1
-                print(tampon)
                 turbine.puiss_opt = max(tampon)
                 turbine.debit_turbine = turbine.debits[(tampon.index(max(tampon)))]
                 i = i + 1
@@ -134,13 +133,13 @@ class Centrale:
             turbine.init_etats(val_qtot)
             turbine.calcul_perte()
             turbine.calcul_chute_nette(self)
-        self.calc_f(val_qtot)
+        self.calc_f(val_qtot, 0)
         self.calc_opt(val_qtot)
         self.calc_debit_turb_total(val_qtot)
         self.fonction_obj()
         #print(self.puissance_totale)
         #print(self.debit_turbine_total)
-       # print(self.deverse)
+        #print(self.deverse)
         print("débits")
 
         for turbine in self.turbines:
