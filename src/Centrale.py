@@ -168,5 +168,5 @@ class Centrale:
 
         for turbine in self.turbines:
             #print(turbine.borne_sup)
-            print(turbine.debit_turbine)
+            print(turbine.debits)
         return  0
