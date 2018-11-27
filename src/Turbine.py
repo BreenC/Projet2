@@ -93,7 +93,7 @@ class Turbine:
 
     def puiss_turbine1(self, debit, chute):
         if self.numero == 1 and debit != 0:
-            puissance = - 8.002 + 0.02927 * debit - 0.5131 * chute - 0.0004408 * debit**2 - 0.009321 * chute * debit - 0.008206 * chute**2
+            puissance = 0.08651 - 0.1976 * debit - 0.002543 * chute + 0.008183 * chute * debit + 0.002892 * debit**2 + 7.371 * 10**(-6) * chute * debit**2 - 1.191 * 10**(-5) * debit**3
             self.puissance = puissance
         elif debit == 0:
             self.puissance = 0
@@ -101,7 +101,7 @@ class Turbine:
 
     def puiss_turbine2(self, debit, chute):
         if self.numero == 2 and debit != 0:
-            puissance = 0.6283 + 0.02915 * debit + 0.01924 * chute - 0.0000446 * debit**2 - 0.009324 * chute * debit
+            puissance = 0.8122 - 0.2442 * debit - 0.02374 * chute + 0.006492 * chute * debit + 0.003838 * debit**2 +  2.207* 10**(-5) * chute * debit**2 - 1.665* 10**(-5) * debit**3
             self.puissance = puissance
         else :
             self.puissance = 0
@@ -109,7 +109,7 @@ class Turbine:
 
     def puiss_turbine3(self, debit, chute):
         if self.numero == 3 and debit != 0:
-             puissance = 47.41 - 0.01254 * debit + 2.857 * chute - 0.0003613 * debit * debit - 0.01044 * chute * debit + 0.04302 * chute**2
+             puissance = - 0.02446 - 0.2157 * debit + 0.0009464 * chute + 0.006353 * chute * debit + 0.003541 * debit**2 + 2.214 * 10**(-5) * chute * debit**2 - 1.569* 10**(-5) * debit**3
              self.puissance = puissance
         elif debit == 0 :
             self.puissance = 0
@@ -125,7 +125,7 @@ class Turbine:
 
     def puiss_turbine5(self, debit, chute):
         if self.numero == 5:
-            puissance = 0.2946 - 0.134 * debit + 0.008074 * chute + 0.00809  * debit**2 + 0.002706  * debit**2 + 1.949 * 10**(-5) * chute * debit**2 - 1.318 * 10**(-5) * debit**3
+            puissance = 0.2946 - 0.1834 * debit - 0.008074 * chute + 0.00809  * debit * chute + 0.002706  * debit**2 + 1.949 * 10**(-5) * chute * debit**2 - 1.318 * 10**(-5) * debit**3
             self.puissance = puissance
         elif debit == 0:
             self.puissance = 0
