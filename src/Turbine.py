@@ -124,7 +124,7 @@ class Turbine:
         return 0
 
     def puiss_turbine5(self, debit, chute):
-        if self.numero == 5:
+        if self.numero == 5 and debit != 0:
             puissance = 0.2946 - 0.1834 * debit - 0.008074 * chute + 0.00809  * debit * chute + 0.002706  * debit**2 + 1.949 * 10**(-5) * chute * debit**2 - 1.318 * 10**(-5) * debit**3
             self.puissance = puissance
         elif debit == 0:
