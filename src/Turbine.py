@@ -82,10 +82,10 @@ class Turbine:
 
     def init_etats(self, centrale, ind):
         i = 0
-        self.etats.append(float(i))
+        self.etats.append(int(i))
         while i < centrale.qtot[ind] :
             i = i + 5
-            self.etats.append(float(i))
+            self.etats.append(int(i))
         return self.etats
 
     def rendre_indisponible(self):
