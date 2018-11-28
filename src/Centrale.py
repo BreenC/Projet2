@@ -63,13 +63,16 @@ class Centrale:
 #PENSER A FAIRE UN COMPTEUR!!!!!!!!!!!!!!!!!
     def calc_f(self, ind):
         compteur = 0
+        premiere_turbine = 5
         for turbine in self.turbines :
             if turbine.is_disponible == False:
+                if turbine.numero == 5 or (turbine.numero == premiere_turbine):
+                    premiere_turbine == premiere_turbine - 1
                 turbine.debit_turbine = 0
                 turbine.puiss_opt = 0
                 compteur = compteur + 1
             else:
-                if turbine.numero != 5 and turbine.numero != 1 :
+                if turbine.numero != 5 and turbine.numero != 1 and turbine.numero != premiere_turbine:
                     i = 0
                     turbine_prec = self.get_turbine_i(turbine.numero + 1 + compteur)
                     compteur = 0
@@ -100,7 +103,7 @@ class Centrale:
                             turbine.debits.append(tampon.index(max(tampon)) * 5)
                             turbine.etats.append(i)
                             i = i + 5
-                elif turbine.numero == 5 :
+                elif turbine.numero == 5 or turbine.numero == premiere_turbine :
                     i = 0
                     while i <= self.qtot[ind] :
                         if i == 0:
