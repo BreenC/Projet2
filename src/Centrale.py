@@ -96,7 +96,6 @@ class Centrale:
                                 tampon.append(f)
                                 k = k + 5
                             val = max(tampon)
-                            print(tampon)
                             turbine.f.append(val)
                             turbine.debits.append(tampon.index(max(tampon)) * 5)
                             turbine.etats.append(i)
@@ -156,7 +155,6 @@ class Centrale:
                     tampon.append(turbine.f[k])
                     k = k + 1
                 turbine.debit_turbine = (tampon.index(max(tampon)))*5
-                print(turbine.debit_turbine)
                 turbine.puiss_turbine5(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
                 turbine.puiss_turbine4(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
                 turbine.puiss_turbine3(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
@@ -194,7 +192,7 @@ class Centrale:
         print("le debit turbine est:")
 
         for turbine in self.turbines:
-            print(turbine.puiss_opt)
+            print(turbine.debit_turbine)
             #print (turbine.puiss_opt)
 
 
