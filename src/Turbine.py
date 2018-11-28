@@ -17,6 +17,7 @@ class Turbine:
         self.f = []
 
 
+
     def get_numero(self):
         return self.numero
 
