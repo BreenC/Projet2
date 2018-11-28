@@ -96,7 +96,7 @@ class Turbine:
         if self.numero == 1 and debit != 0:
             puissance = 0.08651 - 0.1976 * debit - 0.002543 * chute + 0.008183 * chute * debit + 0.002892 * debit**2 + 7.371 * 10**(-6) * chute * debit**2 - 1.191 * 10**(-5) * debit**3
             self.puissance = puissance
-        elif debit == 0:
+        elif debit == 0 and self.numero ==1:
             self.puissance = 0
         return 0
 
@@ -104,7 +104,7 @@ class Turbine:
         if self.numero == 2 and debit != 0:
             puissance = 0.8122 - 0.2442 * debit - 0.02374 * chute + 0.006492 * chute * debit + 0.003838 * debit**2 +  2.207* 10**(-5) * chute * debit**2 - 1.665* 10**(-5) * debit**3
             self.puissance = puissance
-        else :
+        elif self.numero == 2 and debit == 0:
             self.puissance = 0
         return 0
 
@@ -112,7 +112,7 @@ class Turbine:
         if self.numero == 3 and debit != 0:
              puissance = - 0.02446 - 0.2157 * debit + 0.0009464 * chute + 0.006353 * chute * debit + 0.003541 * debit**2 + 2.214 * 10**(-5) * chute * debit**2 - 1.569* 10**(-5) * debit**3
              self.puissance = puissance
-        elif debit == 0 :
+        elif self.numero == 3 and  debit == 0 :
             self.puissance = 0
         return 0
 
@@ -120,7 +120,7 @@ class Turbine:
         if self.numero == 4 and debit != 0:
             puissance = -0.04632 - 0.1905 * debit + 0.001769 * chute  + 0.004951 * chute * debit + 0.003537 * debit**2 + 3.487 * 10**(-5) * chute * debit**2 -1.689 * 10**(-5) * debit**3
             self.puissance = puissance
-        elif debit == 0:
+        elif debit == 0 and self.numero == 4:
             self.puissance = 0
         return 0
 
@@ -128,5 +128,5 @@ class Turbine:
         if self.numero == 5 and debit != 0:
             puissance = 0.2946 - 0.1834 * debit - 0.008074 * chute + 0.00809  * debit * chute + 0.002706  * debit**2 + 1.949 * 10**(-5) * chute * debit**2 - 1.318 * 10**(-5) * debit**3
             self.puissance = puissance
-        elif debit == 0:
+        elif self.numero == 5 and debit == 0:
             self.puissance = 0

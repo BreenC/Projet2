@@ -8,10 +8,10 @@ from src.Parser import Parser
 
 class Main:
     def __init__(self):
-        #pathqtot = "C:/Users/camil/Documents/Polytech/UQAC/trimestre 1/Optimisation/Projet 2 code/Projet2/data/qtot.txt"
-        pathqtot = "C:/Users/mdaadaa/Desktop/Projet2/data/qtot.txt"
-        #pathelamont = "C:/Users/camil/Documents/Polytech/UQAC/trimestre 1/Optimisation/Projet 2 code/Projet2/data/elamont.txt"
-        pathelamont = "C:/Users/mdaadaa/Desktop/Projet2/data/elamont.txt"
+        pathqtot = "C:/Users/camil/Documents/Polytech/UQAC/trimestre 1/Optimisation/Projet 2 code/Projet2/data/qtot.txt"
+        #pathqtot = "C:/Users/mdaadaa/Desktop/Projet2/data/qtot.txt"
+        pathelamont = "C:/Users/camil/Documents/Polytech/UQAC/trimestre 1/Optimisation/Projet 2 code/Projet2/data/elamont.txt"
+        #pathelamont = "C:/Users/mdaadaa/Desktop/Projet2/data/elamont.txt"
 
         centrale = Centrale()
 

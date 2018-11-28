@@ -138,7 +138,8 @@ class Centrale:
                     turbine.debits.append(tampon.index(max(tampon))*5)
                     turbine.f.append(max(tampon))
                     turbine.debit_turbine = tampon.index(max(tampon))*5
-                    turbine.puiss_opt = turbine.puiss_turbine1(turbine.debit_turbine, self.chute_nette[int(turbine.debit_turbine/5)])
+                    turbine.puiss_turbine1(turbine.debit_turbine, self.chute_nette[int(turbine.debit_turbine/5)])
+                    turbine.puiss_opt = turbine.puissance
 
     def calc_opt(self, ind):
         i = 1
@@ -155,11 +156,13 @@ class Centrale:
                     tampon.append(turbine.f[k])
                     k = k + 1
                 turbine.debit_turbine = (tampon.index(max(tampon)))*5
-                turbine.puiss_opt = turbine.puiss_turbine5(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
-                turbine.puiss_opt = turbine.puiss_turbine4(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
-                turbine.puiss_opt = turbine.puiss_turbine3(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
-                turbine.puiss_opt = turbine.puiss_turbine2(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
-                turbine.puiss_opt = turbine.puiss_turbine1(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                print(turbine.debit_turbine)
+                turbine.puiss_turbine5(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                turbine.puiss_turbine4(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                turbine.puiss_turbine3(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                turbine.puiss_turbine2(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                #turbine.puiss_turbine1(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                turbine.puiss_opt = turbine.puissance
                 i = i + 1
             r = r - turbine.debit_turbine
 
@@ -191,7 +194,7 @@ class Centrale:
         print("le debit turbine est:")
 
         for turbine in self.turbines:
-            print(turbine.debit_turbine)
+            print(turbine.puiss_opt)
             #print (turbine.puiss_opt)
 
 
