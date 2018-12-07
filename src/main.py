@@ -36,15 +36,20 @@ class Main:
                 print("Pour rendre la turbine indisponible entrer 0 sinon taper 1 :")
                 dispo = input()
                 if dispo == 0 :
-                    centrale.get_turbine_i(param).rendre_indisponible()
+                    for turbine in centrale.turbines:
+                        if turbine.numero == param :
+                            turbine.rendre_indisponible(turbine)
                 print("Pour changer la borne supérieure (initialement de 160) entré la valeur a enlever ( exemple : 30 pour une borne de 130) pour ne rien changer entrer 0 :")
                 borne = int(input())
                 if borne <= 160 and borne >0 :
                    centrale.get_turbine_i(param).change_borne_sup(borne)
 
-        centrale.run(0)
-      #  for val_qtot in centrale.qtot  :
-      #      centrale.run(val_qtot)
+        ind = 100
+       # while ind < len(centrale.qtot):
+        centrale.run(ind)
+            #ind = ind + 1
+           # print(centrale.puissance_totale)
+
 
 if __name__ == '__main__':
     Main()

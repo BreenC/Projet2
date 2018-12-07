@@ -30,33 +30,6 @@ class Parser:
             raise Exception("Wrong elamont file format, incorrect number of cells")
         return centrale.elamont
 
-
-    @staticmethod
-    def parse_Pi(path):
-        print("Parsing...")
-        file = open(path, 'r')
-        puissances = []
-        for line in file.read().rstrip():
-            i = 1
-            for nb in line.strip():
-                puissances[i].append(float(nb))
-                i = i + 1
-            if i != 5:
-                print("Error, le nombre de turbine est", i, "valeurs, cela devrait être 5 !")
-                raise Exception("Wrong Puissance file format, incorrect number of cells")
-        if len(puissances) != 200:
-            print("Error, Puissance des turbines est", len(puissances), "valeurs, cela devrait être 200 !")
-            raise Exception("Wrong Puissance file format, incorrect number of cells")
-        i = 1
-        for turbine in Centrale.turbines :
-            turbine.numero = 6 - i
-            turbine.puissance = puissances[6 - i]
-            i = i + 1
-        if i != 5:
-            print("Error, le nombre de turbine est", i, "valeurs, cela devrait être 5 !")
-            raise Exception("Wrong Puissance file format, incorrect number of cells")
-        return puissances
-
     def create_turbines(self, centrale):
         i = 5
         while i >0:
@@ -64,6 +37,7 @@ class Parser:
             turbine.numero = i
             centrale.turbines.append(turbine)
             i = i - 1
+
         if len(centrale.turbines) != 5:
             print("Error, le nombre de turbine est",  len(centrale.turbines), "valeurs, cela devrait être 5 !")
             raise Exception("Wrong Puissance file format, incorrect number of cells")

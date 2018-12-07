@@ -149,32 +149,44 @@ class Centrale:
 
         while i <= 5:
             turbine = self.get_turbine_i(i)
-            if i == 1 :
+            if turbine.is_disponible == False :
+                turbine.debit_turbine = 0
+                turbine.puiss_opt = 0
                 i = i + 1
             else :
-                k = 0
-                tampon =[]
-                while k * 5 <= r and k  <= turbine.borne_sup and k < len(turbine.f):
-                    tampon.append(turbine.f[k])
-                    k = k + 1
-                turbine.debit_turbine = (tampon.index(max(tampon)))*5
-                turbine.puiss_turbine5(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
-                turbine.puiss_turbine4(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
-                turbine.puiss_turbine3(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
-                turbine.puiss_turbine2(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
-                #turbine.puiss_turbine1(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
-                turbine.puiss_opt = turbine.puissance
-                i = i + 1
-            r = r - turbine.debit_turbine
+                if i == 1 :
+                    i = i + 1
+                else :
+                    k = 0
+                    tampon =[]
+                    while k * 5 <= r and k  <= turbine.borne_sup and k < len(turbine.f):
+                        tampon.append(turbine.f[k])
+                        k = k + 1
+                    turbine.debit_turbine = (tampon.index(max(tampon)))*5
+                    turbine.puiss_turbine5(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                    turbine.puiss_turbine4(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                    turbine.puiss_turbine3(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                    turbine.puiss_turbine2(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                    #turbine.puiss_turbine1(turbine.debit_turbine,self.chute_nette[int(turbine.debit_turbine/5)])
+                    turbine.puiss_opt = turbine.puissance
+                    i = i + 1
+                r = r - turbine.debit_turbine
 
         return r
 
 
 
     def calc_debit_turb_total(self, ind):
+        self.debit_turbine_total = 0
         for turbine in self.turbines :
             self.debit_turbine_total = self.debit_turbine_total + turbine.debit_turbine
         self.deverse = self.qtot[ind] - self.debit_turbine_total
+
+    def calc_puiss_total(self):
+        self.puissance_totale = 0
+        for turbine in self.turbines:
+            self.puissance_totale = self.puissance_totale + turbine.puiss_opt
+
 
 
 
@@ -183,22 +195,23 @@ class Centrale:
         self.discretidation()
         self.calcul_pertes(ind)
         self.calcul_chute_nette(ind)
-        for turbine in self.turbines:
-            turbine.init_etats(self, ind)
         self.calc_f(ind)
         self.calc_opt(ind)
         self.calc_debit_turb_total(ind)
+        self.calc_puiss_total()
         #print(self.debit_turbine_total)
         #print(self.deverse)
         #print("dbits")
 
-        print("le debit turbine est:")
+        print("les résultats par turbine sont :")
 
         for turbine in self.turbines:
-            print(turbine.debit_turbine)
-            #print (turbine.puiss_opt)
-
-
+           # print(turbine.debit_turbine)
+            print (turbine.numero,  turbine.debit_turbine, turbine.puiss_opt)
+        print("les résultats totals sont :")
+        print(self.debit_turbine_total, self.puissance_totale)
+        print("le débit déversé est")
+        print(self.deverse)
 
 
         return  0
